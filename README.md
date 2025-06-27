@@ -51,67 +51,135 @@ The Android app uses these databases. Always recompile after Python-side changes
 - Image filenames = category names.
 
 ---
+## Database creation
 
-## Database Creation
+Complete the previous step before creating the database. The guides have to be completed and if you
+make any modification in any guide you have to create again the database.
+
+The repository contains the folder `Python/imageDatasets/CITYNAME` which must contains one folder per
+monument and each of which contains the images, as in the following example:
+
+```
 imageDatasets/CITYNAME
-├───Monument1
-│ img1.jpg
-│ ...
-├───Monument2
-│ ...
+├───Battistero SanGiovanni
+│       img1.jpg
+│       img2.jpg
+│       img3.jpg
+│
+├───Campanile Giotto
+│       img1.jpg
+│       img2.jpg
+│       img3.jpg
+│
+├───Cattedrale Duomo
+│       img1.jpg
+│       img2.jpg
+│       img3.jpg
+│
+└───Palazzo Vecchio
+       img1.jpg
+       img2.jpg
+       img3.jpg
+
+```
+
+Go to the folder containing the Dockerfile (i.e. the project folder) and run the following commands in a terminal:
+
+```sh
+1. docker build -t tfimage .
+2. docker run -it tfimage CITYNAME
+3. docker container ls -all
+4. docker cp containerID:/app/models/src/main/assets/databases ./models/src/main/assets/
+```
+NOTE: You can find containerID in the list of the containers in the third instruction.
+
+The following command runs the Docker to process tha visual features of the images and create the database.
+The copy parameter copies also the guides and categories folders in the assets folder of the Android project.
+
+```sh
+1. ./run_docker.sh CITYNAME copy
+```
+
+otherwise run:
+
+```sh
+1. ./run_docker.sh CITYNAME
+2. ./copy_guides.sh CITYNAME
+```
+
+to run first the Docker and then copy the guides and assets of the CITYNAME city (e.g. Florence, Nicosia, Athens).
+
+If you want to update the guide without updating the visual features of the images, run:
+
+```sh
+1. ./copy_guides.sh CITYNAME
+```
+
+after updating the guides of interest, to reduce the time needed to create the database.
+
+NOTE: 'CITYNAME' is the name of the city of the guide you are building and that you created in previous steps.
+If the CITYNAME is not provided the guide for Florence will be built as default.
 
 
-### Docker Commands
+### APK
 
-From the project folder:
+If you want to generate a new APK file, please refer to the following
+guide: [How to Generate APK and Signed APK Files in Android Studio](https://code.tutsplus.com/tutorials/how-to-generate-apk-and-signed-apk-files-in-android-studio--cms-37927)
 
-    ```sh
-    docker build -t tfimage .
-    docker run -it tfimage CITYNAME
-    docker container ls -all
-    docker cp containerID:/app/models/src/main/assets/databases ./models/src/main/assets/
+You will find the APK in `app/build/outputs/apk/support/debug` .
 
-## Or (manual copy):
-    ```sh
-    ./run_docker.sh CITYNAME
-    ./copy_guides.sh CITYNAME
+# App User Guide
 
-APK Generation
-Refer to this guide.
-APK output path: app/build/outputs/apk/support/debug
+Welcome to the app! This guide will help you understand the general functioning of the application
+and how to use its features effectively. Please note that this guide is written for non-expert
+users, so the instructions are simplified for better understanding.
 
-App User Guide
-Installation
-Install APK from app/build/outputs/apk/support/debug.
+## Installation and Setup
 
-Open the app and grant all permissions.
+- Install the app on your Android device from the provided APK file. You can find the APK file in
+  the directory: `app/build/outputs/apk/support/debug`.
+- Once installed, open the app to begin the setup process.
 
-Loading Screen
-Shows while data is loaded.
+## Loading Screen
 
-On first launch, select categories and attributes.
+- When you launch the app, a loading screen will appear. This screen allows the app to load the
+  necessary data into memory. Please wait until the loading process is complete.
+- If it's your first time accessing the application, you will be asked to select your preferred
+  categories and attributes (optional).
+- For the correct functioning of the application, please accept all the asked permissions.
 
-Main Screen
-Lists monuments by selected categories.
+## Main Screen
 
-You can modify your preferences in settings.
+- After the loading process, you will be directed to the main screen of the app.
+- On this screen, you will see a list of monuments, grouped by categories.
+- The categories displayed are based on your preferred choices. You can modify your preferred
+  categories later if needed.
+- The monuments are listed in order of preference, considering their attributes and interaction
+  history.
 
-Camera Recognition
-Tap the FAB (bottom right) to scan a monument.
+## Camera and Monument Recognition
 
-Recognized monuments show a popup with details.
+- To use the camera for monument recognition, tap on the FAB (Floating Action Button) located at the
+  bottom right corner of the main screen.
+- Aim your device's camera at a monument and wait for the app to recognize it.
+- If the app successfully recognizes a monument, a popup will appear with additional information
+  about the monument.
 
-Monument Guides
-Each monument has a dedicated guide.
+## Monument Guides
 
-3 recommended monuments also shown.
+- When you open a guide enjoy the experience!
+- Moreover, the app will recommend three monuments to visit.
+- If you tap on any of the recommended monuments, the app will open the corresponding guide for that
+  monument. Open the integrated map to see how to reach it!
 
-Tap a monument for its guide or map directions.
+## Preferences
 
-Preferences
-Accessible from settings.
+You have the option to modify your preferred categories and attributes in the settings. Simply
+navigate to the preferences section and make the desired changes.
+Feel free to explore the settings section and customize the app to your liking.
 
-Allows changes to categories and attributes.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+This guide provides an overview of the app's features and functionalities. Use the app to explore
+and discover various monuments. If you have any further questions or need assistance, please refer
+to the app's support documentation or contact me. Enjoy your journey!
+<!-- CONTACT -->
 

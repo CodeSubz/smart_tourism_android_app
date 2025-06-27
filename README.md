@@ -1,12 +1,6 @@
 
 # Getting Started
 
-<div align="center">
-  <img src="images/reinherit_screen_athens.png" alt="example screenshot for Athens app" width="23%">
-  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-  <img src="images/reinherit_screen_florence.jpg" alt="example screenshot for Florence app" width="70%"> 
-</div>
-
 The repository consists of two parts:
 
 * Python (Docker supported)

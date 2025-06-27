@@ -1,0 +1,10 @@
+pandas
+opencv-python
+imutils
+progressbar
+scikit-learn
+gensim
+beautifulsoup4
+matplotlib
+albumentations
+scipy==1.11.0

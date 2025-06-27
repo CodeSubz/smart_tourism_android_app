@@ -1,0 +1,107 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
+
+    <!-- Preference Category -->
+    <PreferenceCategory android:title="General Settings" app:iconSpaceReserved="false">
+
+        <!-- CheckBox Preference -->
+        <CheckBoxPreference
+            android:key="pref_key_notifications"
+            android:title="Enable Notifications"
+            android:summary="Receive notifications for updates"
+            android:defaultValue="true" app:iconSpaceReserved="false"/>
+
+        <ListPreference
+            android:key="pref_key_language"
+            android:title="Language"
+            android:summary="Select language"
+            android:entries="@array/language_array"
+            android:entryValues="@array/language_array"
+            android:defaultValue="English" app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <!-- Preference Category -->
+    <PreferenceCategory android:title="Interests" app:iconSpaceReserved="false">
+
+        <Preference
+            android:title="Categories"
+            android:summary="Configure settings for the categories"
+            android:key="key_categories_settings" app:iconSpaceReserved="false"/>
+
+        <Preference
+            android:title="Attributes"
+            android:summary="Configure settings for the attributes"
+            android:key="key_attributes_settings" app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+    <!-- Preference Category -->
+    <PreferenceCategory android:title="Classifier" app:iconSpaceReserved="false">
+
+        <!-- Integer preference (Allow integer from 1 to 4) -->
+        <EditTextPreference
+            android:key="pref_key_num_threads"
+            android:title="Threads"
+            app:useSimpleSummaryProvider="true"
+            android:defaultValue="1"
+            android:inputType="number"
+            app:iconSpaceReserved="false"
+            android:summary="Number of threads to use for the classifier"
+            android:dialogTitle="Enter number of threads"/>
+            />
+
+        <ListPreference
+            android:key="pref_key_model"
+            android:title="Model"
+            app:useSimpleSummaryProvider="true"
+            android:entries="@array/tfe_ic_models"
+            android:entryValues= "@array/tfe_ic_models"
+            android:defaultValue="Precise" app:iconSpaceReserved="false"/>
+
+        <ListPreference
+            android:key="pref_key_device"
+            android:title="Device"
+            app:useSimpleSummaryProvider="true"
+            android:entries="@array/tfe_ic_devices"
+            android:entryValues= "@array/tfe_ic_devices"
+            android:defaultValue="CPU" app:iconSpaceReserved="false"/>
+
+        <ListPreference
+            android:key="pref_key_mode"
+            android:title="Mode"
+            app:useSimpleSummaryProvider="true"
+            android:entries="@array/modes_array"
+            android:entryValues= "@array/modes_array"
+            android:defaultValue="Standard" app:iconSpaceReserved="false"/>
+
+        <CheckBoxPreference
+            android:key="pref_key_gps_classifier"
+            android:title="Use GPS"
+            android:summary="Enable GPS for helping the classifier"
+            android:defaultValue="true" app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+
+
+    <!-- Preference Category -->
+    <PreferenceCategory android:title="About" app:iconSpaceReserved="false">
+
+        <Preference
+            android:key="pref_key_user_id"
+            android:title="User ID"
+            app:useSimpleSummaryProvider="true"
+
+            app:iconSpaceReserved="false"/>
+
+        <!-- Preference (Static Text) -->
+        <Preference
+            android:title="App Version"
+            android:summary="1.0.0" app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

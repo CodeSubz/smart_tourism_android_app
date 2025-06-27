@@ -1,14 +1,3 @@
-<a name="readme-top"></a>
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <img src="images/logo_name.jpg" alt="Logo" width="512" height="512">
-
-  <p align="center">
-    Smart Tourism app for Android Devices
-  </p>
-</div>
 
 # Getting Started
 
